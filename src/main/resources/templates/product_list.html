@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gb2312">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="all" name="robots"/>
+    <meta name="author" content="Fisher" />
+    <meta name="Copyright" content="Copyright 2007-2008, 版权所有 www.reefdesign.cn" />
+    <meta name="description" content="reefdesign" />
+    <meta name="keywords" content="reefdesign" />
+    <title>电子书城</title>
+    <link rel="shortcut icon" href="favicon.ico" >
+    <link rel="stylesheet" rev="stylesheet" href="/style.css" type="text/css" media="all" />
+
+</head>
+
+<body class="main">
+
+<div id="divhead">
+    <table cellspacing="0" class="headtable">
+        <tr>
+            <td><a href="index.html"><img src="/logo.gif" width="95" height="30" border="0" /></a></td>
+            <td style="text-align:right"><img src="/cart.gif" width="26" height="23" style="margin-bottom:-4px"/>&nbsp;
+                <a href="/users/tourl?url=cart">购物车</a>　|　
+                <a href="#">帮助中心</a>　|　
+                <a href="login.html">我的帐户</a>　|　
+                <a href="/users/tourl?url=register">新用户注册</a></td>
+        </tr>
+    </table>
+</div>
+
+<div id="divmenu" >
+<!--    <a href="/users/tourl?url=product_list">文学</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">生活</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">计算机</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">外语</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">经管</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">励志</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">社科</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">学术</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">少儿</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">艺术</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">原版</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">科技</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">考试</a>　　-->
+<!--    <a href="/users/tourl?url=product_list">生活百科</a>　　　　-->
+    <span th:each="classification : ${classificationList}">
+        <a th:href="@{/users/classification(classification_id=${classification.classification_id})}">
+            <span th:text="${classification.classification_book}"></span>　　
+        </a>
+    </span>
+    <a href="/users/home" style="color:#FFFF00">全部商品目录</a>
+</div>
+<div id="divsearch"><table width="100%" border="0" cellspacing="0">
+    <tr>
+        <td style="text-align:right; padding-right:220px">Search
+            <input type="text" name="textfield" class="inputtable"/>
+            <!--<input name="searchbutton" type="image" src="images/serchbutton.gif" style=" margin-bottom:-4px"/>-->
+            <a href="search.html"><img src="/serchbutton.gif" border="0" style="margin-bottom:-4px"/></a></td>
+    </tr>
+</table>
+
+</div>
+
+
+<div id="divpagecontent">
+    <table width="100%" border="0" cellspacing="0">
+        <tr>
+            <td width="25%"><table width="100%" border="0" cellspacing="0" style="margin-top:30px">
+                <tr>
+                    <td class="listtitle">分类</td>
+                </tr>
+                <tr th:each="classification : ${classificationList}">
+                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{/users/classification(classification_id=${classification.classification_id})}"><span th:text="${classification.classification_book}"></span>　　</a>
+                </tr>
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">计算机</a></td>-->
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">外语</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">艺术</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">经管</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">人文社科</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">少儿</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">生活</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="/users/tourl?url=product_list">-->
+<!--                        进口原版</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">科技</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">考试</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">励志</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">学术</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">小说</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">古籍</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">哲学</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">旅游</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">法律</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">宗教</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">历史</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">地理</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">政治</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">军事</a> </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">心理学</a></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                        <a href="/users/tourl?url=product_list">传记</a></td>-->
+<!--                </tr>-->
+
+
+            </table></td>
+            <td>
+                <div style="text-align:right; margin:5px 10px 5px 0px"><a href="/users/tourl?url=index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;旅游&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;图书列表</div>
+
+                <table cellspacing="0" class="listcontent">
+                    <tr>
+                        <td>
+                            <h1>商品目录</h1><hr/><h1>计算机类</h1>&nbsp;&nbsp;&nbsp;&nbsp;共386999种商品<hr/>
+                            <img src="/miniicon2.gif" />&nbsp;&nbsp;&nbsp;&nbsp;计算机类的子分类&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;JAVA&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;ASP.NET&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;网站设计&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;图形处理
+
+                            <div style="margin-top:20px; margin-bottom:5px"><img src="/productlist.gif" width="631" height="38" /></div>
+
+                            <table cellspacing="0" class="booklist">
+                                <tr >
+                                    <td th:each="book : ${bookList}">
+                                        <div class="divbookpic">
+                                            <p><a th:href="@{/users/selectBookOne(book_id=${book.book_id})}">
+                                                <img th:src="@{/{book_img}(book_img=${book.book_img})}" width="115" height="129" border="0" />
+                                            </a></p>
+                                        </div>
+                                        <div class="divlisttitle">
+                                            <a href="info.html">
+                                                [[${book.book_name}]]
+                                            <br />
+                                            售价：<span th:text="${book.book_price}"></span>
+                                             </a>
+                                        </div>
+                                    </td>
+<!--                                    <td>-->
+<!--                                        <div class="divbookpic">-->
+<!--                                            <p><a href="/users/tourl?url=info"><img src="/dayongxiaohua.jpg" width="115" height="129" border="0" /></a></p>-->
+<!--                                        </div>-->
+<!--                                        <div class="divlisttitle"><a href="info.html">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </a></div>-->
+
+<!--                                    </td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/fish.jpg" width="91" height="122" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/dulala.jpg" width="109" height="141" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/subwayinshanghai.jpg" width="97" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+                                </tr>
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        <div class="divbookpic">-->
+<!--                                            <p><a href="/users/tourl?url=info"><img src="/dayongxiaohua.jpg" width="115" height="129" border="0" /></a></p>-->
+<!--                                        </div>-->
+<!--                                        <div class="divlisttitle"><a href="info.html">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </a></div>-->
+
+<!--                                    </td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/fish.jpg" width="91" height="122" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/dulala.jpg" width="109" height="141" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic"><p><img src="/subwayinshanghai.jpg" width="97" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA-->
+<!--                                            <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/euro.jpg" width="90" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/tripcn.jpg" width="83" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/photog.jpg" width="92" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/ngcn.jpg" width="96" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/travelbook.jpg" width="102" height="130" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/dulala.jpg" width="109" height="141" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/think.jpg" width="85" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/oneplant.jpg" width="111" height="111" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+                            </table>
+
+
+<!--                            <table cellspacing="0" class="booklist">-->
+<!--                                <tr>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/tripcn.jpg" width="83" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/think.jpg" width="85" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/dayongxiaohua.jpg" width="115" height="129" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/ngcn.jpg" width="96" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                            <table cellspacing="0" class="booklist">-->
+<!--                                <tr>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/photog.jpg" width="92" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/fish.jpg" width="91" height="122" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/euro.jpg" width="90" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/java2.jpg" width="102" height="130" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                            <table cellspacing="0" class="booklist">-->
+<!--                                <tr>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/subwayinshanghai.jpg" width="97" height="135" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/code.jpg" width="101" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/travelbook.jpg" width="102" height="130" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                    <td><div class="divbookpic">-->
+<!--                                        <p><img src="/think.jpg" width="85" height="128" /></p>-->
+<!--                                    </div>-->
+<!--                                        <div class="divlisttitle">书名AAAAA <br />-->
+<!--                                            售价： 19.80 </div></td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+
+
+
+                            <div class="pagination">
+                                <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总 <span th:text="${pageInfo.pages}"></span> 页,共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+<!--                                <a th:href="@{/users/home}">首页</a>-->
+<!--                                <a th:href="@{/users/home(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>-->
+<!--                                <a th:href="@{/users/home(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>-->
+<!--                                <a th:href="@{/users/home(pageNum=${pageInfo.pages})}">尾页</a>-->
+                                <ul th:each="pages : ${pageInfo.pages}">
+                                    <li class="">
+                                        <a th:href="@{/users/home(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"><<-上一页</a>
+                                    </li>
+                                    <li>
+                                        <a th:each="page,pageStat:${pageInfo.navigatepageNums}"
+                                           th:href="@{/users/home(pageNum=${page})}">
+                                        <span th:if="${page}==${pageInfo.pageNum}">
+                                            <span class="btn-page btn-active" th:text="${page}"></span>
+                                        </span>
+                                            <span th:if="${page}!=${pageInfo.pageNum}">
+                                            <span class="btn-page btn-default" th:text="${page}"></span>
+                                        </span>
+                                        </a>
+                                    </li>
+<!--                                    <li class="currentpage">1</li>-->
+<!--                                    <li><a href="#">2</a></li>-->
+<!--                                    <li><a href="#">3</a></li>-->
+<!--                                    <li><a href="#">4</a></li>-->
+<!--                                    <li><a href="#">5</a></li>-->
+<!--                                    <li><a href="#">6</a></li>-->
+<!--                                    <li><a href="#">7</a></li>-->
+<!--                                    <li><a href="#">8</a></li>-->
+<!--                                    <li><a href="#">9</a>...</li>-->
+<!--                                    <li><a href="#">15</a></li>-->
+<!--                                    <li><a href="#">16</a></li>-->
+                                    <li class="nextpage"><a th:href="@{/users/home(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页->></a></li>
+                                </ul>
+                            </div>
+
+
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div id="divfoot">
+    <table width="100%" border="0" cellspacing="0">
+        <tr>
+            <td rowspan="2" style="width:10%"><img src="/bottomlogo.gif" width="195" height="50" style="margin-left:175px"/></td>
+            <td style="padding-top:5px; padding-left:50px"><a href="#"><font color="#747556"><b>CONTACT US</b></font></a></td>
+        </tr>
+        <tr>
+            <td style="padding-left:50px"><font color="#CCCCCC"><b>COPYRIGHT 2008 &copy; eShop All Rights RESERVED.</b></font></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>
