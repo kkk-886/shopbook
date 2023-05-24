@@ -24,4 +24,9 @@ public class UsersDAOImpl implements UsersDAO {
         return usersMapper.InsertUser(users);
     }
 
+    @Override
+    public boolean UpdateUser(Users users) {
+        return usersMapper.UpdateUser(users);
+    }
+
 }

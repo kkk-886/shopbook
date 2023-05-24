@@ -20,9 +20,9 @@
         <tr>
             <td><a href="index.html"><img src="/logo.gif" width="95" height="30" border="0" /></a></td>
             <td style="text-align:right"><img src="/cart.gif" width="26" height="23" style="margin-bottom:-4px"/>&nbsp;
-                <a href="/users/tourl?url=cart">购物车</a>　|　
+                <a href="cart.html">购物车</a>　|　
                 <a href="#">帮助中心</a>　|　
-                <a href="/users/tourl?url=my">我的帐户</a>　|　
+                <a href="my.html">我的帐户</a>　|　
                 <a href="/users/tourl?url=register">新用户注册</a></td>
         </tr>
     </table>
@@ -44,12 +44,14 @@
 <!--    <a href="product_list.html">考试</a>　　-->
 <!--    <a href="product_list.html">生活百科</a>　　　　-->
 <!--    <a href="product_list.html" style="color:#FFFF00">全部商品目录</a>-->
+
     <span th:each="classification : ${classificationList}">
         <a th:href="@{/users/classification(classification_id=${classification.classification_id})}">
             <span th:text="${classification.classification_book}"></span>　　
         </a>
     </span>
     <a href="/users/home" style="color:#FFFF00">全部商品目录</a>
+
 </div>
 <div id="divsearch"><table width="100%" border="0" cellspacing="0">
     <tr>
@@ -72,20 +74,20 @@
                 </tr>
                 <tr>
                     <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="modifyuserinfo.html">用户信息修改</a></td>
+                        <a href="/users/tourl?url=modifyuserinfo">用户信息修改</a></td>
                 </tr>
 
                 <tr>
                     <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="orderlist.html">订单查询</a></td>
+                        <a href="/users/selectCartList">订单查询</a></td>
                 </tr>
                 <tr>
                     <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="news.html">帐户余额</a></td>
+                        <a href="#">帐户余额</a></td>
                 </tr>
                 <tr>
                     <td class="listtd"><img src="/miniicon.gif" width="9" height="6" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="news.html">我的收藏</a></td>
+                        <a href="#">我的收藏</a></td>
                 </tr>
 
 
@@ -104,7 +106,7 @@
 
 
             </table></td>
-            <td><div style="text-align:right; margin:5px 10px 5px 0px"><a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a href="my.html">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;订单查询</div>
+            <td><div style="text-align:right; margin:5px 10px 5px 0px"><a href="index.html">首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;<a href="my.html">&nbsp;我的帐户</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;修改成功</div>
 
 
 
@@ -112,48 +114,16 @@
 
                 <table cellspacing="0" class="infocontent">
                     <tr>
-<!--                        <td style="padding:20px"><p>欢迎XXX光临XXX商城！</p>-->
-<!--                            <p>您已经成交了3笔交易，有<font style="color:#FF0000">1</font>项交易正在处理中...</p>-->
-                            <table width="100%" border="0" cellspacing="0" class="tableopen">
-                                <tr>
-                                    <td bgcolor="#A3E6DF" class="tableopentd01">订单号</td>
-                                    <td bgcolor="#A3E2E6" class="tableopentd01">订单内容</td>
-                                    <td bgcolor="#A3D7E6" class="tableopentd01">收件人</td>
-                                    <td bgcolor="#A3CCE6" class="tableopentd01">订单时间</td>
-                                    <td bgcolor="#A3B6E6" class="tableopentd01">状态</td>
-                                </tr>
-                                <tr th:each="cartList : ${cartList}">
-<!--                                    <td class="tableopentd02">001234567</td>-->
-<!--                                    <td class="tableopentd02"><a href="info.html">经典项目管理案例分析-->
-<!--                                    </a></td>-->
-<!--                                    <td class="tableopentd02">Tony</td>-->
-<!--                                    <td class="tableopentd02">2008年4月19日</td>-->
-<!--                                    <td class="tableopentd03">已完成</td>-->
-
-                                    <td class="tableopentd02"><span th:text="${cartList.getCart_order_number()}"></span></td>
-                                    <td class="tableopentd02"><a href="info.html"><span th:text="${cartList.getCart_name()}"></span>
-                                    </a></td>
-                                    <td class="tableopentd02"><span th:text="${cartList.getShr()}"></span></td>
-                                    <td class="tableopentd02"><span th:text="${cartList.getCart_date()}"></span></td>
-                                    <td class="tableopentd03"><span th:text="${cartList.getCart_static()}"></span></td>
-
-                                </tr>
-<!--                                <tr>-->
-<!--                                    <td class="tableopentd02">001234567</td>-->
-<!--                                    <td class="tableopentd02"><a href="info.html">经典项目管理案例分析-->
-<!--                                    </a></td>-->
-<!--                                    <td class="tableopentd02">Tony</td>-->
-<!--                                    <td class="tableopentd02">2008年4月19日</td>-->
-<!--                                    <td class="tableopentd03">已完成</td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td class="tableopentd02">001234567</td>-->
-<!--                                    <td class="tableopentd02"><a href="info.html">Lonely Plant</a></td>-->
-<!--                                    <td class="tableopentd02">Tony</td>-->
-<!--                                    <td class="tableopentd02">2008年5月1日</td>-->
-<!--                                    <td class="tableopentd03"><font style="color:#FF0000">已发货</font></td>-->
-<!--                                </tr>-->
-                            </table></td>
+                        <td style="padding:20px; text-align:center"><table width="70%" border="0" cellspacing="0" style="margin-top:70px">
+                            <tr>
+                                <td style="width:98px"><img src="/success.gif" width="98" height="119" /></td>
+                                <td style="padding-top:30px"><font style="font-weight:bold; color:#FF0000">您的用户信息修改成功！</font><br />
+                                    <br />
+                                    <a href="/users/tourl?url=my">返回我的帐户</a></td>
+                            </tr>
+                        </table>
+                            <p>&nbsp;</p>
+                        </td>
                     </tr>
                 </table>
 

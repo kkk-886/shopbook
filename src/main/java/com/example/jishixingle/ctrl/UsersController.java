@@ -155,6 +155,47 @@ public class UsersController {
 
     }
 
+    @RequestMapping("/updateUsers")
+    public String updateUsers(Users users , HttpSession session){
+        Users u = (Users) session.getAttribute("users");
+        int id = u.getId();
+        String uname = u.getUname();
+        String email = u.getEmail();
+        String upass = users.getUpass();
+        if(upass == null){
+            upass = u.getUpass();
+        }
+        String sex = users.getSex();
+        if(sex == null){
+            sex = u.getSex();
+        }
+        String iphone = users.getIphone();
+        if(iphone == null){
+            iphone = u.getIphone();
+        }
+        String shdz = users.getShdz();
+        if(shdz == null){
+            shdz = u.getShdz();
+        }
+        String mbwt = users.getMbwt();
+        if(mbwt == null){
+            mbwt = u.getMbwt();
+        }
+        String daan = users.getDaan();
+        if(daan == null){
+            daan = u.getDaan();
+        }
+        String byyx = users.getByyx();
+        if(byyx == null){
+            byyx = u.getByyx();
+        }
+
+        Users usersnew = new Users(id,uname,upass,email,sex,iphone,shdz,mbwt,daan,byyx);
+
+        usersDAO.UpdateUser(usersnew);
+
+        return "success";
+    }
 
 
     //查询单本书详细信息然后跳转到书本详情页面

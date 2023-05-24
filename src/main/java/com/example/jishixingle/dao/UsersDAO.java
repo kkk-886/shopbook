@@ -10,4 +10,7 @@ public interface UsersDAO {
     //新用户
     public boolean InsertUser(Users users);
 
+    //修改用户信息
+    boolean UpdateUser(Users users);
+
 }
