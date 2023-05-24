@@ -19,5 +19,7 @@ public interface CartDAO {
     //修改订单
 //    public boolean updateCart();
 
+    //显示已经购买的订单
+    List<Cart> selectCartList(int id);
 
 }

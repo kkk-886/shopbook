@@ -28,4 +28,9 @@ public class CartDAOImpl implements CartDAO {
     public boolean deleteCartOne(int cart_id) {
         return cartMapper.deleteCartOne(cart_id);
     }
+
+    @Override
+    public List<Cart> selectCartList(int id) {
+        return cartMapper.selectCartList(id);
+    }
 }

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -154,6 +155,8 @@ public class UsersController {
 
     }
 
+
+
     //查询单本书详细信息然后跳转到书本详情页面
     @RequestMapping("/selectBookOne")
     public String selectBookOne(HttpServletRequest request , Model model){
@@ -188,16 +191,16 @@ public class UsersController {
         String shr = users.getUname();
         String iphone = users.getIphone();
         //生成当前时间
-//        Date date = new Date();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        System.out.println(simpleDateFormat.format(date));
-//        String cart_date = simpleDateFormat.format(date);
-//        //生成随机数，当作订单号
-//        int i = (int) ((Math.random()*9+1)*10000);
-//        int cart_ordernumber = i ;
+        String cart_date = simpleDateFormat.format(date);
+        //生成随机数，当作订单号
+        int i = (int) ((Math.random()*9+1)*10000);
+        int cart_order_number = i ;
         int book_id = book.getBook_id();
         int id = users.getId();
-        Cart cart = new Cart(0,cart_name,cart_scj,cart_yhj,num,cart_num,shdz,shr,iphone,book_id,id);
+        Cart cart = new Cart(0,cart_name,cart_scj,cart_yhj,num,cart_num,shdz,shr,iphone,book_id,id,cart_order_number,cart_date,3,null);
         System.out.println(cart.getCart_name());
         boolean b = cartDAO.updateCartOne(cart);
 
@@ -219,6 +222,9 @@ public class UsersController {
     public String deleteCartOne(HttpServletRequest request , Model model){
         int cart_id = Integer.parseInt(request.getParameter("cart_id"));
         boolean b = cartDAO.deleteCartOne(cart_id);
+        //显示分类列表
+        List<Classification> classificationList = classificationDAO.selectClassificationAll();
+        model.addAttribute("classificationList",classificationList);
         if(b){
             //查询订单全部信息放到前端显示
             List<Cart> cartList = cartDAO.selectCartAll();
@@ -237,6 +243,17 @@ public class UsersController {
 //        return "";
     }
 
+    @RequestMapping("/selectCartList")
+    public String selectCartList(HttpServletRequest request , Model model , HttpSession session){
+        Users users = (Users) session.getAttribute("users");
+        int id = users.getId();
+        List<Cart> cartList = cartDAO.selectCartList(id);
+        model.addAttribute("cartList", cartList);
+        //显示分类列表
+        List<Classification> classificationList = classificationDAO.selectClassificationAll();
+        model.addAttribute("classificationList",classificationList);
+        return "orderlist";
+    }
 
 
 

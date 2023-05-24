@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="gb2312">
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -118,12 +118,6 @@
                                         </table>
                                         <table width="100%" border="0" cellspacing="0">
                                             <tr th:each="cartList : ${cartList}">
-                                                <!--                                                <td width="10%">001</td>-->
-                                                <!--                                                <td width="40%">JAVA入门经典</td>-->
-                                                <!--                                                <td width="10%">45.00</td>-->
-                                                <!--                                                <td width="10%">38.00</td>-->
-                                                <!--                                                <td width="10%"><input name="text" type="text" value="1" style="width:20px"/></td>-->
-                                                <!--                                                <td width="10%">38.00</td>-->
                                                 <td width="10%"><span th:text="${cartList.getCart_id()}"></span></td>
                                                 <td width="40%"><span th:text="${cartList.getCart_name()}"></span></td>
                                                 <td width="10%"><span th:text="${cartList.getCart_scj()}"></span></td>
@@ -131,9 +125,7 @@
                                                 <td width="10%"><input name="num" type="text" value="1" style="width:20px"/></td>
                                                 <td width="10%"><span th:text="${cartList.getCart_num()}"></span></td>
 
-                                                <td width="10%"><a
-                                                        th:href="@{/users/deleteCartOne(cart_id=${cartList.getCart_id()})}"
-                                                        style="color:#FF0000; font-weight:bold">X</a></td>
+                                                <td width="10%"><a th:href="@{/users/deleteCartOne(cart_id=${cartList.getCart_id()})}" style="color:#FF0000; font-weight:bold">X</a></td>
                                             </tr>
                                         </table>
                                         <table width="100%" border="0" cellspacing="0">

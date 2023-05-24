@@ -1,7 +1,5 @@
 package com.example.jishixingle.model;
 
-import java.util.Date;
-
 public class Cart {
 
     int cart_id;
@@ -15,11 +13,15 @@ public class Cart {
     String iphone;
     int book_id;
     int id;
+    int cart_order_number;
+    String cart_date;
+    int cart_static_id;
+    String cart_static;
 
     public Cart() {
     }
 
-    public Cart(int cart_id, String cart_name, double cart_scj, double cart_yhj, int num, double cart_num, String shdz, String shr, String iphone, int book_id, int id) {
+    public Cart(int cart_id, String cart_name, double cart_scj, double cart_yhj, int num, double cart_num, String shdz, String shr, String iphone, int book_id, int id, int cart_order_number, String cart_date, int cart_static_id, String cart_static) {
         this.cart_id = cart_id;
         this.cart_name = cart_name;
         this.cart_scj = cart_scj;
@@ -31,6 +33,10 @@ public class Cart {
         this.iphone = iphone;
         this.book_id = book_id;
         this.id = id;
+        this.cart_order_number = cart_order_number;
+        this.cart_date = cart_date;
+        this.cart_static_id = cart_static_id;
+        this.cart_static = cart_static;
     }
 
     public int getCart_id() {
@@ -119,5 +125,37 @@ public class Cart {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCart_order_number() {
+        return cart_order_number;
+    }
+
+    public void setCart_order_number(int cart_order_number) {
+        this.cart_order_number = cart_order_number;
+    }
+
+    public String getCart_date() {
+        return cart_date;
+    }
+
+    public void setCart_date(String cart_date) {
+        this.cart_date = cart_date;
+    }
+
+    public int getCart_static_id() {
+        return cart_static_id;
+    }
+
+    public void setCart_static_id(int cart_static_id) {
+        this.cart_static_id = cart_static_id;
+    }
+
+    public String getCart_static() {
+        return cart_static;
+    }
+
+    public void setCart_static(String cart_static) {
+        this.cart_static = cart_static;
     }
 }
