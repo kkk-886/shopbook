@@ -1,10 +1,7 @@
 package com.example.jishixingle.mapper;
 
 import com.example.jishixingle.model.Cart;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -28,5 +25,9 @@ public interface CartMapper {
     //显示已经购买的订单
     @Select("select * from cart c inner join cart_static cc on  c.cart_static_id = cc.cart_static_id and c.cart_static_id != 3 and id = #{id}")
     List<Cart> selectCartList(int id);
+
+    //修改订单的状态
+    @Update("update cart set cart_static_id = 1 where cart_static_id = 3")
+    boolean updateCartAll();
 
 }

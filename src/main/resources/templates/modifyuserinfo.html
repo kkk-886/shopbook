@@ -111,22 +111,25 @@
                                 <table width="100%" border="0" cellspacing="2" class="upline">
                                     <tr>
                                         <td style="text-align:right; width:20%">会员邮箱：</td>
-                                        <td style="width:40%; padding-left:20px">abc@abc.com</td>
+<!--                                        <td style="width:40%; padding-left:20px">abc@abc.com</td>-->
+                                        <td style="width:40%; padding-left:20px"><span th:text="${users.getEmail()}"></span></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:right">会员名：</td>
-                                        <td style="padding-left:20px">Tony</td>
+                                        <td style="padding-left:20px"><span th:text="${users.getUname()}"></span></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:right">修改密码：</td>
-                                        <td><input type="password" name="upass" class="textinput"/></td>
+                                        <td><input type="password" name="upass" id="pass" class="textinput"/></td>
                                         <td><font color="#999999">密码设置至少6位，请区分大小写</font></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:right">重复密码：</td>
-                                        <td><input type="password" class="textinput"/></td>
+                                        <td><input type="password" name="upasss" id="p" class="textinput"
+                                                   onblur="check()"/><span
+                                                id="tishi"></span></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
@@ -193,7 +196,11 @@
                                 <table width="100%" border="0" cellspacing="2" class="upline">
                                     <tr>
                                         <td style="text-align:right; width:20%">输入校验码：</td>
-                                        <td style="width:50%"><input name="text4" type="text" class="textinput"/></td>
+                                        <td style="width:50%"><input name="text4" type="text" id="yzmsr" onblur="yz()" class="textinput"/>
+                                            <br/>
+                                            <span id="yzmts"></span>
+                                            <input type="text" id="yzm" disabled style=" width:50px ; border: 0"><span onclick="yzm() ">点击生成验证码</span>
+                                        </td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
@@ -203,8 +210,9 @@
                                     </tr>
                                 </table>
 
-                                <p style="text-align:center"><a onclick="document:formId.submit()"><img src="/botton_gif_025.gif"
-                                                                                         border="0"/></a></p>
+                                <p style="text-align:center"><a onclick="document:formId.submit()"><img
+                                        src="/botton_gif_025.gif"
+                                        border="0"/></a></p>
                                 <p style="text-align:center">&nbsp;</p></td>
                         </tr>
                     </table>
@@ -230,6 +238,42 @@
     </table>
 </div>
 
+
+<script>
+
+    function check() {
+        var pass = document.getElementById("pass").value
+        var p = document.getElementById("p").value
+        var tishi = document.getElementById("tishi");
+        // alert(pass)
+        // alert(p)
+        if (pass != p) {
+            // alert("密码不一致")
+            tishi.innerHTML = "<br><font color='red'>两次输入的密码不一致</font>";
+        } else {
+            tishi.innerHTML = "";
+        }
+    }
+
+    function yzm() {
+        var num = Math.floor(Math.random() * 1000 + 1000);
+        var suijishu = num;
+        document.getElementById("yzm").value = num;
+    }
+
+    function yz() {
+        var yzm = document.getElementById("yzm").value;
+        var qryzm = document.getElementById("yzmsr").value;
+        var yzmts = document.getElementById("yzmts");
+        if (yzm != qryzm) {
+            yzmts.innerHTML = "<font color='red'>验证码不一致</font>";
+        } else {
+            yzmts.innerHTML = "";
+        }
+    }
+
+
+</script>
 
 </body>
 </html>

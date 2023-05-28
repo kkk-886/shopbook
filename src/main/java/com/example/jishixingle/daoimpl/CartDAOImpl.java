@@ -33,4 +33,9 @@ public class CartDAOImpl implements CartDAO {
     public List<Cart> selectCartList(int id) {
         return cartMapper.selectCartList(id);
     }
+
+    @Override
+    public boolean updateCartAll() {
+        return cartMapper.updateCartAll();
+    }
 }

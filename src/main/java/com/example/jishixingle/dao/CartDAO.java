@@ -22,4 +22,7 @@ public interface CartDAO {
     //显示已经购买的订单
     List<Cart> selectCartList(int id);
 
+    //修改订单的状态
+    boolean updateCartAll();
+
 }

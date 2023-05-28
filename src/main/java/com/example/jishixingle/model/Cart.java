@@ -158,4 +158,9 @@ public class Cart {
     public void setCart_static(String cart_static) {
         this.cart_static = cart_static;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
